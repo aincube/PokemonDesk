@@ -8,6 +8,7 @@ const Footer = () => {
       <span role="img" aria-label="heart">
         ❤️
       </span>
+      <span className={s.footerright}>Ours Team</span>
     </div>
   );
 };

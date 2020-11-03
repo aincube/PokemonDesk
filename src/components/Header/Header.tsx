@@ -8,6 +8,20 @@ const Header = () => {
   return (
     <div className={s.header}>
       <img className={s.logo} src={logo} alt="Pokemon logo" />
+      <ul className={s.navbar}>
+        <li className={s.menuitem}>
+          <a href="#Home">Home</a>
+        </li>
+        <li className={s.menuitem}>
+          <a href="#Pokedex">Pokédex</a>
+        </li>
+        <li className={s.menuitem}>
+          <a href="#Legendaries">Legendaries</a>
+        </li>
+        <li className={s.menuitem}>
+          <a href="#Documentation">Documentation</a>
+        </li>
+      </ul>
     </div>
   );
 };
