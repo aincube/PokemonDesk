@@ -1,6 +1,4 @@
 node_modules/
-<<<<<<< HEAD
 .vscode/
-=======
-.vscode/
->>>>>>> cfca7066320019a14ed978488ab4edaeaa1726d0
+
+src/**.d.ts
