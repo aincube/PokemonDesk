@@ -11,6 +11,7 @@
   "author": "aincube <aincube@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "classnames": "^2.2.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
@@ -20,7 +21,6 @@
     "@types/react-dom": "^16.9.9",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
-    "classnames": "^2.2.6",
     "css-loader": "^5.0.0",
     "css-modules-typescript-loader": "^4.0.1",
     "eslint": "^7.12.1",
