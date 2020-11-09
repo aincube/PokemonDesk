@@ -3,7 +3,8 @@ import cn from 'classnames';
 import s from './Heading.module.scss';
 
 interface HeadingProps {
-  size: 'xl' | 'l' | 'm' | 's' | 'xs';
+  // size: 'xl' | 'l' | 'm' | 's' | 'xs';
+  size?: string;
 }
 
 const Heading: React.FC<HeadingProps> = ({ children, size }) => {
@@ -31,7 +32,9 @@ const Heading: React.FC<HeadingProps> = ({ children, size }) => {
   return React.createElement(
     `h${sizePoint}`,
     {
-      className: cn(s.heading, s[`size${size.toUpperCase()}`]),
+      // TODO: Какого-то чёрта эта дрянь перестала работать!!!
+      // className: cn(s.heading, s[`size${size.toUpperCase()}`]),
+      className: cn(s.heading),
     },
     children,
   );
