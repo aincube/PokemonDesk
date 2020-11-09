@@ -1,0 +1,62 @@
+@import '../../variables';
+
+.root {
+  min-height: 100vh;
+  /* yellowGradient */
+  background: linear-gradient(180deg, $third 0%, $primary 100%);
+}
+
+.contentWrap {
+  position: absolute;
+  left: 10.9%;
+  right: 53.3%;
+  top: 21.58%;
+  bottom: 24.02%;
+  width: 516px;
+  height: 567px;
+}
+
+.contentText h1 {
+  /* h1 */
+  position: absolute;
+  left: 0.19%;
+  right: 1.74%;
+  top: 0%;
+  bottom: 54.76%;
+
+  font-family: Karla;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 84px;
+  letter-spacing: 4px;
+
+  color: #000000;
+}
+
+.contentText p {
+  position: absolute;
+  left: 0.19%;
+  right: 0%;
+  top: 56.73%;
+  bottom: 23.34%;
+
+  /* h2 */
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 37px;
+
+  color: #000000;
+}
+
+.contentParallax {
+  position: absolute;
+  width: 793px;
+  height: 680px;
+  left: 648px;
+  top: 160px;
+  width: 793px;
+  height: 680px;
+}
