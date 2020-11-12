@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     camelcase: 1,
     'react/prop-types': 'off',
+    'react/jsx-key': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
     'no-console': 'error',
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx', '.ts', '.js'] }],

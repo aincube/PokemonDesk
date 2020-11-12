@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../../components/Header';
 import PokemanCard, { IPokemonCard } from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
@@ -218,11 +219,14 @@ const pokemons: IPokemonCard[] = [
 
 const Pokedex = () => {
   return (
-    <div className={s.root}>
-      {pokemons.map((card) => (
-        <PokemanCard card={card} />
-      ))}
-    </div>
+    <>
+      <Header />
+      <div className={s.root}>
+        {pokemons.map((card) => (
+          <PokemanCard key={card.id} card={card} />
+        ))}
+      </div>
+    </>
   );
 };
 

@@ -1,7 +1,9 @@
 import React from 'react';
-import Heading from '../Heading';
+import cn from 'classnames';
 
 import s from './PokemonCard.module.scss';
+
+import Heading from '../Heading';
 
 export interface IPokemonCardStats {
   hp: number;
@@ -33,12 +35,21 @@ interface PokemonCardProps {
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ card, ...rest }) => {
+  // TODO: Make background color of card dependent on pokemon type
+  //   const bgstyle = {};
+  //   if(card.types.length < 2){
+  //     bgstyle = { background: 'linear-gradient(270deg, #b33327 0.15%, #d93e30 100%);' }
+  //   }
+  //   else {
+  //     bgstyle = { background: 'linear-gradient(270deg, #b33327 0.15%, #d93e30 100%);' }
+  //   }
+
   return (
-    <div className={s.root}>
+    <div className={s.root} key={card.id}>
       <div className={s.infoWrap}>
         {/* TODO: Add support for className */}
         {/* <Heading size='xs' className={s.titleName}> */}
-        <Heading size="xs">{card.name_clean}</Heading>
+        <Heading size="s">{card.name_clean}</Heading>
         <div className={s.statWrap}>
           <div className={s.statItem}>
             <div className={s.statValue}>{card.stats.attack}</div>
@@ -50,7 +61,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ card, ...rest }) => {
           </div>
         </div>
         <div className={s.labelWrap}>
-          <span className={s.label}>{card.types}</span>
+          {card.types.map((type) => (
+            <span key={type} className={cn(s.label, s[type as keyof typeof s])}>
+              {type}
+            </span>
+          ))}
         </div>
       </div>
       <div className={s.pictureWrap}>
