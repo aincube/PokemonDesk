@@ -53,10 +53,17 @@
 
 .contentParallax {
   position: absolute;
-  width: 793px;
-  height: 680px;
-  left: 648px;
-  top: 160px;
-  width: 793px;
-  height: 680px;
+  right: 10%;
+  bottom: -6.92%;
+
+  left: 565px;
+  top: 60px;
+}
+
+.btn {
+  position: absolute;
+  left: 25%;
+  right: 0%;
+  top: 86.73%;
+  bottom: 23.34%;
 }

@@ -3,10 +3,11 @@ import cn from 'classnames';
 import s from './Heading.module.scss';
 
 interface HeadingProps {
-  size: 'xl' | 'l' | 'm' | 's' | 'xs';
+  // size: 'xl' | 'l' | 'm' | 's' | 'xs';
+  size?: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ children, size }) => {
+const Heading: React.FC<HeadingProps> = ({ children, size = 'xs' }) => {
   let sizePoint;
   switch (size) {
     case 'xl':
@@ -31,7 +32,7 @@ const Heading: React.FC<HeadingProps> = ({ children, size }) => {
   return React.createElement(
     `h${sizePoint}`,
     {
-      className: cn(s.heading, s[`size${size.toUpperCase()}`]),
+      className: cn(s.heading, s[`size${size.toUpperCase()}` as keyof typeof s]),
     },
     children,
   );
