@@ -13,7 +13,7 @@ interface IPokeAPI {
 }
 
 const usePokemons = () => {
-  const [data, setData] = useState<IPokeAPI>();
+  const [data, setData] = useState<IPokeAPI>({ pokemons: [], total: 0 });
   const [isLoading, setLoading] = useState<boolean>(true);
   const [isError, setError] = useState<boolean>(false);
 
@@ -59,11 +59,15 @@ const Pokedex = () => {
     <>
       <div className={s.message}>
         <Heading size="l">
-          {data ? data.total : ErrorMsg} <b>Pokemons</b> for you to choose your favorite
+          {/* {data ? data.total : ErrorMsg} <b>Pokemons</b> for you to choose your favorite */}
+          {data.total} <b>Pokemons</b> for you to choose your favorite
         </Heading>
       </div>
       <div className={s.root}>
-        {data ? data.pokemons.map((item) => <PokemonCard key={item.id} card={item} />) : ErrorMsg}
+        {/* {data ? data.pokemons.map((item) => <PokemonCard key={item.id} card={item} />) : ErrorMsg} */}
+        {data.pokemons.map((item) => (
+          <PokemonCard key={item.id} card={item} />
+        ))}
       </div>
     </>
   );
