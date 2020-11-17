@@ -1,5 +1,6 @@
 import React from 'react';
 import { navigate } from 'hookrouter';
+import { LinkEnum } from '../../routes';
 
 import s from './NotFound.module.scss';
 
@@ -19,7 +20,7 @@ const NotFoundPage = () => {
         </div>
       </div>
       <div className={s.ybutton}>
-        <Button color="yellow" size="normal" onClick={() => navigate('/')}>
+        <Button color="yellow" size="normal" onClick={() => navigate(LinkEnum.POKEDEX)}>
           Return
         </Button>
       </div>
