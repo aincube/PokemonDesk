@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Heading from '../../components/Heading';
 import PokemonCard, { IPokemonCard } from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
+import useData from '../../hook/getData';
 
 interface IPokeAPI {
   count?: number;
@@ -12,38 +13,57 @@ interface IPokeAPI {
   total: number;
 }
 
-const usePokemons = () => {
-  const [data, setData] = useState<IPokeAPI>({ pokemons: [], total: 0 });
-  const [isLoading, setLoading] = useState<boolean>(true);
-  const [isError, setError] = useState<boolean>(false);
+// interface IGetPokemons {
+//   data: IPokeAPI;
+//   isLoading: boolean;
+//   isError?: boolean;
+// }
 
-  useEffect(() => {
-    const getPokemons = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch('http://zar.hosthot.ru/api/v1/pokemons?limit=9&offset=200');
-        const result = await response.json();
+// const usePokemons = () => {
+//   const [data, setData] = useState<IPokeAPI>({ pokemons: [], total: 0 });
+//   const [isLoading, setLoading] = useState<boolean>(true);
+//   const [isError, setError] = useState<boolean>(false);
 
-        setData(result);
-      } catch (error) {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
+//   useEffect(() => {
+//     const getPokemons = async () => {
+//       setLoading(true);
 
-    getPokemons();
-  }, []);
+//       try {
+//         const result = await req('getPokemons');
 
-  return {
-    data,
-    isLoading,
-    isError,
-  };
-};
+//         setData(result);
+//       } catch (error) {
+//         setError(true);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     getPokemons();
+//   }, []);
+
+//   return {
+//     data,
+//     isLoading,
+//     isError,
+//   };
+// };
 
 const Pokedex = () => {
-  const { data, isLoading, isError } = usePokemons();
+  const [searchValue, setSearchValue] = useState('');
+
+  const query = useMemo(
+    () => ({
+      name: searchValue,
+    }),
+    [searchValue],
+  );
+
+  const { data, isLoading, isError } = useData<IPokeAPI>('getPokemons', query, [searchValue]);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
 
   const ErrorMsg = <div>Error has occurred</div>;
 
@@ -62,6 +82,9 @@ const Pokedex = () => {
           {/* {data ? data.total : ErrorMsg} <b>Pokemons</b> for you to choose your favorite */}
           {data.total} <b>Pokemons</b> for you to choose your favorite
         </Heading>
+      </div>
+      <div>
+        <input type="text" value={searchValue} onChange={handleSearchChange} />
       </div>
       <div className={s.root}>
         {/* {data ? data.pokemons.map((item) => <PokemonCard key={item.id} card={item} />) : ErrorMsg} */}
