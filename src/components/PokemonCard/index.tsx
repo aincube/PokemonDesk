@@ -5,6 +5,7 @@ import { IPokemonCard } from '../../interface/pokemons';
 import s from './PokemonCard.module.scss';
 
 import Heading from '../Heading';
+import toCapitalizeFirstLetter from '../../utils/utils';
 
 interface PokemonCardProps {
   card: IPokemonCard;
@@ -25,7 +26,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ card, ...rest }) => {
       <div className={s.infoWrap}>
         {/* TODO: Add support for className */}
         {/* <Heading size='xs' className={s.titleName}> */}
-        <Heading size="s">{card.name_clean}</Heading>
+        <Heading size="s">{toCapitalizeFirstLetter(card.name_clean)}</Heading>
         <div className={s.statWrap}>
           <div className={s.statItem}>
             <div className={s.statValue}>{card.stats.attack}</div>
@@ -39,7 +40,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ card, ...rest }) => {
         <div className={s.labelWrap}>
           {card.types.map((type) => (
             <span key={type} className={cn(s.label, s[type as keyof typeof s])}>
-              {type}
+              {toCapitalizeFirstLetter(type)}
             </span>
           ))}
         </div>

@@ -20,4 +20,14 @@ describe('getUrlWithParams', () => {
       query: { name: 'Pikachu' },
     });
   });
+
+  test('should get 2 parameteres - 1st endpoint config, 2nd object with {id: 25} and return object with url parameters and empty query param', () => {
+    const url = getUrlWithParamsConfig('getPokemon', { id: 25 });
+    expect(url).toEqual({
+      protocol: 'http',
+      host: 'zar.hosthot.ru',
+      pathname: '/api/v1/pokemon/25',
+      query: {},
+    });
+  });
 });

@@ -3,6 +3,7 @@ import Heading from '../../components/Heading';
 import PokemonCard from '../../components/PokemonCard';
 
 import s from './Pokedex.module.scss';
+
 import useData from '../../hook/getData';
 import { IPokeAPI, IPokemonCard } from '../../interface/pokemons';
 import useDebounce from '../../hook/useDebounce';
@@ -49,7 +50,6 @@ const Pokedex = () => {
         <input type="text" value={searchValue} onChange={handleSearchChange} />
       </div>
       <div className={s.root}>
-        {/* {data ? data.pokemons.map((item) => <PokemonCard key={item.id} card={item} />) : ErrorMsg} */}
         {!isLoading && data && data.pokemons.map((item: IPokemonCard) => <PokemonCard key={item.id} card={item} />)}
       </div>
     </>
