@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import handlebars from 'handlebars';
 import Hapi from '@hapi/hapi';
+import HapiInert from '@hapi/inert';
 import React from 'react';
 import ReactDom from 'react-dom/server';
 import { setPath } from 'hookrouter';
@@ -13,11 +14,12 @@ const init = async () => {
     host: 'localhost',
   });
 
-  // await server.register(require('@hapi/inert'));
+  await server.register(HapiInert);
+  //   await server.register(require('@hapi/inert'));
 
   server.route({
     method: 'GET',
-    path: 'main.js',
+    path: '/main.js',
     handler: (request, h) => h.file(path.join(process.cwd(), 'dist', 'main.js')),
   });
 
